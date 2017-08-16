@@ -7,3 +7,4 @@ Here is some text
 
 ```markdown
 This is some syntax highlighted code
+```
