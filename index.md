@@ -5,5 +5,5 @@ Here is some text
 
 ### Here is some smaller text
 
-"""markdown
+```markdown
 This is some syntax highlighted code
