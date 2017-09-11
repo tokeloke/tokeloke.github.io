@@ -1,0 +1,2 @@
+Convert videos:
+ffmpeg -i shellymov_battle.mov -acodec aac -strict experimental -ac 2 -ab 128k -vcodec libx264 -f mp4 -crf 22 -s 640x360 shelly_web.mp4
