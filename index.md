@@ -14,7 +14,7 @@ where the warrior princess Shelly Ann fight her way through a post apocalyptic
 world where modern music has turned people into brainless zombies.
 
 <video width="100%" height="100%" controls>
-  <source src="videos/shelly_web_good4.mp4" type="video/mp4">
+  <source src="videos/shelly_revision.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 
