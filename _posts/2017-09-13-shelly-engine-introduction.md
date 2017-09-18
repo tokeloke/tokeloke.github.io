@@ -20,25 +20,32 @@ OpenGL is graphics api that enables you to render graphics on the screen using y
 OpenGL mathematics is a library for creating and manipulating vectors. I am using the structures in this library as the basis of the geometry in my game. This library is propably not an essential library to know, but it provided me with some essential basics for vector manipulation that I found very useful.
 
 ## Features
-The Shelly Engine is being developed specifically for the game Shelly Ann, but in theory many of it's parts could be re-purposed to create any 2D game. The game is currently divided into gameplay code specific to the game (Enemies, Projectiles, Levels) and Engine code, which is more generic. Go connect the two parts, there are a series of managers, each of which handle a domain of the game. When I add a new feature to the game, which touches a completely new domain, I will encapsulate this new domain functionality in a manager. 
+The Shelly Engine is being developed specifically for the game Shelly Ann, but in theory many of it's parts could be re-purposed to create any 2D game. The game is currently divided into gameplay code specific to the game (Enemies, Projectiles, Levels) and Engine code, which is more generic. To connect the two parts, there are a series of managers, each of which handle a domain of the game. When I add a new feature to the game, which touches a completely new domain, I will encapsulate this new domain functionality in a manager. 
 
 The features currently in the Shelly Engine are:
 
-### Entity System
-It has a system for creating and rendering entities to the screen. The entities are packed together in one contigous datastructure for performance purposes.
+### Rendering
+A system for rendering to the screen. The system is using OpenGL as well as fragment and vertex shaders.
 
 ### Collision Detection
-It has a collision dection system to detect and resolve collision between entities and between entites and the level.
+It has a collision dection system to detect and resolve collision between entities and between entities and the level.
 
 ### Sound and Music
 It has a system for loading and playing sound effects and music.
 
 ### User Input
-It has a system for handeling use input (keyboard)
+It has a system for handeling use input (keyboard).
 
 ### Particle Effects
 I has a simple particle effect system for creating things like blood and scrapnel.
 
+### Level creation
+A simple tile editor for creating different levels.
+
 ### Debug
 The engine has a debug mode that enables you to play the game frame by frame and to highlight important things such as collision and rendering boxes.
+
+### Menu
+A system for adding menus and submenus
+
 
