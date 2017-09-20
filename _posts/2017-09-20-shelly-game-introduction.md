@@ -1,13 +1,15 @@
 ---
 layout: custom
-title: Shelly Game - Introduction
+title: Game
 ---
 
-# Shelly Ann and the Zombie Surf
+# Game - Introduction
+<div class="img-container">
+    <img height="250px" width="auto" src="/imgs/shelly_ann.jpg" />
+    <img height="250px" width="auto" src="/imgs/bad_guy.jpg" />
+</div>
 
 ## Presentation
-<img height="300px" width="auto" src="/imgs/the_companion.jpg" />
-
 Shelly Ann and the Zombie surf takes place in the near future. In the years before, music, which used to be a source for life and happieness, has become worse and worse and more and more monotone. It has become so bad that it has changed people's brainwaves and rendered them into mindless zombies. Not all people are infected yet, but most of the worlds population is already lost and the future of the world is grim. Agnea, a young woman, writes a letter to legendary warrior, Shelly Ann, and begs her to help her beat the disease. They need to get hold of a weapon, which Agnea's father knows of, which might help them get rid of the disease once and for all.
 
 ## Gameplay

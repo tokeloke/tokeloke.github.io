@@ -1,0 +1,28 @@
+.img-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+}
+
+.menu-list {
+    margin-top: 40px;
+    margin-bottom: -30px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    font-size: large;
+}
+
+.menu-list li {
+    display: inline;
+    color: white;
+}
+
+.menu-list a {
+    color: white;
+}
+
+#sidebar p {
+    margin-bottom: 0px;    
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/style.css?v=c1414d0f0b90a1507a68c5e208c0b367346dcd3a" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
+    <link rel="stylesheet" href="/css/main.css" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Engine | Toke Jensen</title>
+<meta property="og:title" content="Engine" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Engine: Introduction" />
+<meta property="og:description" content="Engine: Introduction" />
+<link rel="canonical" href="http://localhost:4000/2017/09/19/shelly-engine-introduction.html" />
+<meta property="og:url" content="http://localhost:4000/2017/09/19/shelly-engine-introduction.html" />
+<meta property="og:site_name" content="Toke Jensen" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-09-19T00:00:00+02:00" />
+<script type="application/ld+json">
+{"name":null,"description":"Engine: Introduction","url":"http://localhost:4000/2017/09/19/shelly-engine-introduction.html","headline":"Engine","dateModified":"2017-09-19T00:00:00+02:00","datePublished":"2017-09-19T00:00:00+02:00","sameAs":null,"@type":"BlogPosting","author":null,"image":null,"publisher":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2017/09/19/shelly-engine-introduction.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://localhost:4000/">
+          <h1>Toke Jensen</h1>
+        </a>
+        <h2>Game Developer</h2>
+        
+          <!--a href="http://github.com/tokeloke/tokeloke.github.io" class="button"><small>View project on</small> GitHub</a-->
+        
+        
+          <div>
+            <ul class="menu-list">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+              
+                <li>
+                  <a href="/2017/09/20/shelly-game-introduction.html">Game</a>
+                </li>
+              
+                <li>
+                  <a href="/2017/09/19/shelly-engine-introduction.html">Engine</a>
+                </li>
+              
+            </ul>
+          </div>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1 id="engine-introduction">Engine: Introduction</h1>
+
+<h2 id="intro">Intro</h2>
+<p>I choose to create my own custom engine for the Shelly Ann game, because I wanted to learn the very basic mechanics behind a game engine. Even though using an engine like Unity would have enabled me to develop my game much faster and easier, I chose this as a way for me to learn the nitty gritty details of how a game works.</p>
+
+<p>I have allowed myself to use a couple of libraries. First of all, to speed up the development of the game just a little bit and second, because I would like to be familiar with some of these libraries that are very widely used and serve as the basis for many game engines.</p>
+
+<h3 id="sdl"><a href="https://www.libsdl.org/">SDL</a></h3>
+<p>SDL is a library for accessing low level platform features such as window management, keyboard/mouse input and sound.</p>
+
+<h3 id="opengl"><a href="https://www.opengl.org/">OpenGL</a></h3>
+<p>OpenGL is graphics api that enables you to render graphics on the screen using your graphics card. Is basically enables you to use the computing power of your graphics card to do all the low level calculations such as rasterization and texture mapping. I am using OpenGL to render my sprites to the screen.</p>
+
+<h3 id="opengl-mathematics"><a href="https://glm.g-truc.net">OpenGL Mathematics</a></h3>
+<p>OpenGL mathematics is a library for creating and manipulating vectors. I am using the structures in this library as the basis of the geometry in my game. This library is propably not an essential library to know, but it provided me with some essential basics for vector manipulation that I found very useful.</p>
+
+<h2 id="features">Features</h2>
+<p>The Shelly Engine is being developed specifically for the game Shelly Ann, but in theory many of it’s parts could be re-purposed to create any 2D game. The game is currently divided into gameplay code specific to the game (Enemies, Projectiles, Levels) and Engine code, which is more generic. To connect the two parts, there are a series of managers, each of which handle a domain of the game. When I add a new feature to the game, which touches a completely new domain, I will encapsulate this new domain functionality in a manager.</p>
+
+<p>The features currently in the Shelly Engine are:</p>
+
+<h3 id="level-creation">Level creation</h3>
+<p>A simple tile editor for creating different levels. Each level is defined as an ASCII file of characters, where each characters defines a tile
+or an object in the game world. In this example ‘.’ defines empty space, ‘R’ defines an invisible tile, ‘@’ is the player and the rest of the
+letters define different types of enemies.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="nx">R</span><span class="p">......................................................................</span><span class="nx">R</span>
+<span class="nx">R</span><span class="p">......................................................................</span><span class="nx">R</span>
+<span class="nx">R</span><span class="p">......................................................................</span><span class="nx">R</span>
+<span class="nx">R</span><span class="p">......................................................................</span><span class="nx">R</span>
+<span class="nx">RL</span><span class="p">.......</span><span class="err">@</span><span class="p">.....</span><span class="nx">EL</span><span class="p">.</span><span class="nx">E</span><span class="p">.</span><span class="nx">L</span><span class="p">..................................................</span><span class="nx">R</span>
+<span class="nx">RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR</span>
+<span class="p">........................................................................</span>
+</code></pre>
+</div>
+<p>It is a very simple system that has worked well for me until now. At this point though, I would like to be able
+to add some more information to my game objects, such as the direction of the object. In the current version, each zombie
+has a default direction (left) and they will all walk in this direction until they hit a wall. To be able to define more
+precisely the enemies, there are several approaches. I could abandon the ASCII format and make an actual world editor where
+I modify each level “live” in engine and find a system to add objects on the fly.</p>
+
+<p>I could also add new features to the existing ASCII system, that allows me more control. Right now, I imagine a system where I can
+define each enemy before or after the actual level data as a kind of a header (one per line). Then, in the actual level data, I can place each of these
+enemies in the place where I want them to be.. This allows me to add attributes to each enemy, such as the direction, the life, speed etc.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">E</span><span class="err">:</span> <span class="nx">Slimzombie</span> <span class="nx">RIGHT</span> <span class="mi">100</span> <span class="mi">12</span>
+<span class="nl">R</span><span class="p">:</span> <span class="nx">Slimzombie</span> <span class="nx">LEFT</span> <span class="mi">120</span> <span class="mi">5</span>
+<span class="nl">T</span><span class="p">:</span> <span class="nx">Crawlingzombie</span> <span class="nx">RIGHT</span> <span class="mi">100</span> <span class="mi">12</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="p">........................................................................</span>
+<span class="nx">R</span><span class="p">......................................................................</span><span class="nx">R</span>
+<span class="nx">R</span><span class="p">......................................................................</span><span class="nx">R</span>
+<span class="nx">R</span><span class="p">......................................................................</span><span class="nx">R</span>
+<span class="nx">R</span><span class="p">......................................................................</span><span class="nx">R</span>
+<span class="nx">RL</span><span class="p">........</span><span class="err">@</span><span class="p">......</span><span class="nx">E</span><span class="p">.</span><span class="nx">R</span><span class="p">.</span><span class="nx">T</span><span class="p">.................................................</span><span class="nx">R</span>
+<span class="nx">RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR</span>
+<span class="p">........................................................................</span>
+</code></pre>
+</div>
+<h3 id="rendering">Rendering</h3>
+<p>A system for rendering to the screen. The system is using OpenGL as well as fragment and vertex shaders. (MORE DETAILS LATER)</p>
+
+<h3 id="collision-detection">Collision Detection</h3>
+<p>It has a collision dection system to detect and resolve collision between entities and between entities and the level.  (MORE DETAILS LATER)</p>
+
+<h3 id="sound-and-music">Sound and Music</h3>
+<p>It has a system for loading and playing sound effects and music. (MORE DETAILS LATER)</p>
+
+<h3 id="user-input">User Input</h3>
+<p>It has a system for handeling use input (keyboard). (MORE DETAILS LATER)</p>
+
+<h3 id="particle-effects">Particle Effects</h3>
+<p>I has a simple particle effect system for creating things like blood and scrapnel. (MORE DETAILS LATER)</p>
+
+<h3 id="debug">Debug</h3>
+<p>The engine has a debug mode that enables you to play the game frame by frame and to highlight important things such as collision and rendering boxes. (MORE DETAILS LATER)</p>
+
+<h3 id="menu">Menu</h3>
+<p>A system for adding menus and submenus. (MORE DETAILS LATER)</p>
+
+
+          <!--p>This page was generated by 
+             <a href="https://pages.github.com">GitHub Pages</a>.
+          </p-->
+        </section>
+
+        <aside id="sidebar">
+            <h2>Info</h2>
+            <p>
+                <strong>Github: </strong>
+                <a href="https://github.com/tokeloke">
+                    https://github.com/tokeloke
+                </a>
+            </p>
+            <p>
+                <strong>Email: </strong>
+                tokeloke@gmail.com
+            </p>
+            <p>
+                <strong>CV: </strong>
+                <a href="/misc/Toke_CV3.pdf" download>
+                    Link
+                </a>
+            </p>
+        </aside>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
